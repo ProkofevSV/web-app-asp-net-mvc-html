@@ -1,0 +1,34 @@
+﻿@using ToDoHTML.Models
+@using ToDoHTML.Extensions
+@model List<Topic>
+
+<h1><b>Темы</b></h1>
+
+@Html.ActionLink("Добавить запись", "Create", "Topics")
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Тема
+            </th>            
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+        <tr>
+            <td>
+                @task.Name
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", "Topics", new { id = task.Id }, new { })
+                @Html.ActionLink("Изменить", "Edit", "Topics", new { id = task.Id }, new { })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
